@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter, getContacts } from '../../Redux/contacts/selectors';
-import { deleteContactAction } from '../../Redux/contacts/contactSlise';
+import { selectFilter, selectContacts } from '../../Redux/contacts/selectors';
+import { deleteContact } from '../../Redux/operations';
 import { List, ListItem, DeleteButton } from './ContactList.styled';
 
 export const ContactList = () => {
-  const filter = useSelector(getFilter);
-  const { contacts } = useSelector(getContacts);
+  const filter = useSelector(selectFilter);
+  const { contacts } = useSelector(selectContacts);
 
   let normalized = filter ? filter.toLowerCase() : '';
   const visibleContacts = contacts.filter(contact =>
@@ -15,7 +15,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   const deleteContact = contactId => {
-    dispatch(deleteContactAction(contactId));
+    dispatch(deleteContact(contactId));
   };
 
   return (
