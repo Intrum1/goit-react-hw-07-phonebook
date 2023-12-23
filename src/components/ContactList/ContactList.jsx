@@ -14,7 +14,7 @@ export const ContactList = () => {
   );
   const dispatch = useDispatch();
 
-  const deleteContact = contactId => {
+  const Contact = contactId => {
     dispatch(deleteContact(contactId));
   };
 
